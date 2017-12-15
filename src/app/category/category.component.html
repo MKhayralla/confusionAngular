@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <ul>
+      <li *ngFor="let dish of dishes">
+        <a routerLink="/dish/{{dish._id}}">{{dish.name}}</a>
+      </li>
+    </ul>
+
+  </div>
+
+</div>

@@ -1,0 +1,26 @@
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+    <li class="breadcrumb-item"><a routerLink="/menu">Menu</a></li>
+    <li class="breadcrumb-item">{{dish.name}}</li>
+</ul>
+<div class="container w3-padding-large">
+  <div class="row w3-padding-large">
+    <div class="col-xs-12 col-sm-12">
+      <h1>{{dish.name}}<span class="badge badge-info">{{dish.price/100}}$</span></h1>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <p>{{dish.description}}</p>
+    </div>
+    <div class="col-xs-6 col-sm-6">
+      <img class="img img-responsive" src="{{dish.image}}" alt="photo not found">
+    </div>
+  </div>
+  <div class="row w3-padding-large">
+    <h3>Comments : </h3>
+    <ul>
+      <li *ngFor="let comment of dish.comments">
+      <h5>{{comment.author.username}}<span class="badge">{{comment.rating}}</span></h5>
+      <p>{{comment.comment}}</p></li>
+    </ul>
+  </div>
+</div>

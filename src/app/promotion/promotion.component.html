@@ -1,0 +1,22 @@
+<!-- promotions Section -->
+  <div class="w3-row w3-padding-64" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Promotions</h1><br>
+      <ul>
+        <li *ngFor="let dish of promotions">
+          <h4>{{dish.name}}</h4>
+            <span class="badge badge-danger">{{dish.label}}</span>
+            <span class="badge badge-info badge-pill">{{dish.price/100}}$</span>
+          <p class="w3-text-grey">{{dish.description}}</p>
+        </li>
+      </ul>
+      <h3 class="w3-center"><a routerLink="/menu">complete menu</a></h3><br>
+    </div>
+    <div class="w3-col l6 w3-padding-large">
+      <img src="/assets/img/main.png" class="img img-responsive w3-round w3-image w3-opacity-min"
+       alt="Menu">
+    </div>
+  </div>
+
+
+  <hr>
