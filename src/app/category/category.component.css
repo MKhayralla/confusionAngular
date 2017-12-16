@@ -1,0 +1,8 @@
+span {
+  padding-right: 15px ;
+}
+.badge {
+  background-color: red ;
+  border: solid 1px grey ;
+  text-align: center;
+}

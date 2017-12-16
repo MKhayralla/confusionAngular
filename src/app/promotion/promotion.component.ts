@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Promotion } from '../promotion' ;
 import { PromotionsService } from '../promotions.service' ;
+import { ConfigService } from '../config.service' ;
 
 @Component({
   selector: 'app-promotion',
@@ -9,7 +10,8 @@ import { PromotionsService } from '../promotions.service' ;
 })
 export class PromotionComponent implements OnInit {
 
-  constructor(private PromotionsService : PromotionsService) { }
+  constructor(private PromotionsService : PromotionsService,
+              private ConfigService : ConfigService) { }
 
   ngOnInit() {
     this.initPromo() ;
@@ -18,6 +20,7 @@ export class PromotionComponent implements OnInit {
   initPromo() : void{
     this.PromotionsService.getPromotions()
     .subscribe((dishes)=>{
+      dishes.forEach(this.ConfigService.editPromoImg) ;
       this.promotions = dishes ;
     })
   }

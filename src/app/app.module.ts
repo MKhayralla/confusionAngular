@@ -21,7 +21,8 @@ import { DishComponent } from './dish/dish.component';
 import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './routing/routing.module';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { FooterComponent } from './footer/footer.component' ;
+import { FooterComponent } from './footer/footer.component';
+import { FactsComponent } from './facts/facts.component' ;
 
 
 @NgModule({
@@ -38,13 +39,14 @@ import { FooterComponent } from './footer/footer.component' ;
     DishComponent,
     HomeComponent,
     AboutusComponent,
-    FooterComponent
+    FooterComponent,
+    FactsComponent
   ],
   imports: [
     BrowserModule ,
     FormsModule ,
     HttpClientModule,
-    RoutingModule
+    RoutingModule 
   ],
   providers: [DishesService, ConfigService, LeadersService,PromotionsService],
   bootstrap: [AppComponent]

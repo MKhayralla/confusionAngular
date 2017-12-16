@@ -4,10 +4,19 @@
       <h1 class="w3-center">Promotions</h1><br>
       <ul>
         <li *ngFor="let dish of promotions">
-          <h4>{{dish.name}}</h4>
-            <span class="badge badge-danger">{{dish.label}}</span>
-            <span class="badge badge-info badge-pill">{{dish.price/100}}$</span>
-          <p class="w3-text-grey">{{dish.description}}</p>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-6 col-sm-9">
+                <h4>{{dish.name}}</h4>
+                  <span class="badge badge-danger">{{dish.label}}</span>
+                  <span class="badge badge-info badge-pill">{{dish.price/100}}$</span>
+                <p class="w3-text-grey">{{dish.description}}</p>
+              </div>
+              <div class="col-xs-6 col-sm-3">
+                <img src="{{dish.image}}" class="img img-responsive" alt="photo not found">
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
       <h3 class="w3-center"><a routerLink="/menu">complete menu</a></h3><br>

@@ -1,3 +1,19 @@
-<p>
-  leader works!
-</p>
+<div class="row">
+    <ul>
+      <li *ngFor="let leader of leaders">
+        <div class="row">
+          <div class="col-xs-6 col-sm-12 col-lg-4">
+            <h3>{{leader.name}}</h3>
+          </div>
+          <div class="col-xs-6 col-sm-12 col-lg-4">
+            <h4><small>{{leader.designation}}</small></h4>
+          </div>
+          <div class="col-xs-12 col-sm-12">
+            <p>{{leader.description}}</p>
+          </div>
+          <hr>
+          <br>
+        </div>
+      </li>
+    </ul>
+</div>

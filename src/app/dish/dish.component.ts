@@ -24,7 +24,7 @@ export class DishComponent implements OnInit {
     this.DishesService.getDish(this.route.snapshot.paramMap.get('id'))
     .subscribe((dish) =>{
       this.dish = dish ;
-      this.dish.image = this.url+this.dish.image ;
+      this.ConfigService.editImageLink(this.dish) ;
     })
   }
 
