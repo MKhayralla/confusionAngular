@@ -3,7 +3,7 @@ export class Promotion {
   name : string ;
   image? : string ;
   label? : string ;
-  price : string ;
+  price : number ;
   featured : boolean ;
   description : string ;
 }

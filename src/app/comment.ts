@@ -5,4 +5,5 @@ export class Comment {
   rating : number ;
   comment : string ;
   author : User ;
+  _id : string ;
 }

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 offset-sm-3">
+      <form class="form-horizontal" style="padding-top : 50px ;" >
+        <div class="form-group">
+          <input type="text" [(ngModel)]="username" placeholder="username" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="password" [(ngModel)]="password" placeholder="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+          <button name="button" class="form-control btn btn-info" (click)="login()">Log In</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12 col-sm-6 offset-sm-3 w3-serif alert alert-danger" *ngIf="wrong">
+      Make Sure of the username and the password
+    </div>
+    <div class="col-xs-12 col-sm-9 offset-sm-3">
+      <small class="w3-serif w3-wide">don't have an account ?</small>
+      <a routerLink="/signup" class="w3-serif">sign up</a>
+    </div>
+  </div>
+</div>

@@ -4,16 +4,17 @@ import { of } from 'rxjs/observable/of' ;
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ConfigService } from './config.service' ;
+import { AuthHttp } from 'angular2-jwt' ;
+import { Http , Headers } from '@angular/http' ;
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new Headers({ 'Content-Type': 'application/json' })
 };
 import { Dish } from './dish' ;
-
 @Injectable()
 export class DishesService {
-
   constructor(private http : HttpClient ,
-    private ConfigService : ConfigService) { }
+    private ConfigService : ConfigService ,
+    private HTTP : AuthHttp) { }
   message = '' ;
   url = this.ConfigService.url ;
   log(message : string) {
@@ -44,6 +45,24 @@ export class DishesService {
         this.log('fetched dish with id' + id ) ;
       }),
       catchError(this.handleError('getDish' , null)));
+  }
+  postComment (rating : number , comment : string , dishId : string) : Observable<Dish> {
+    const url =`${this.url}/dishes/${dishId}/comments` ;
+    return this.HTTP.post(url,JSON.stringify({'rating' : rating , 'comment' : comment}),httpOptions)
+    .pipe(tap((dish) =>this.log('comment posted')),
+          catchError(this.handleError('post comment : ',null))) ;
+  }
+  deleteComment (dishId : string , commentId : string) : Observable<Dish> {
+    const url =`${this.url}/dishes/${dishId}/comments/${commentId}` ;
+    return this.HTTP.delete(url,httpOptions)
+    .pipe(tap((dish) =>this.log('comment deleted')),
+          catchError(this.handleError('delete comment : ',null))) ;
+  }
+  editComment (dishId : string , commentId : string, rating : number , comment : string) : Observable<Dish> {
+    const url =`${this.url}/dishes/${dishId}/comments/${commentId}` ;
+    return this.HTTP.put(url,JSON.stringify({'rating' : rating , 'comment' : comment}),httpOptions)
+    .pipe(tap((dish) =>this.log('comment edited')),
+          catchError(this.handleError('edit comment : ',null))) ;
   }
   /**
    * Handle Http operation that failed.

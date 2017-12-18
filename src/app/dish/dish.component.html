@@ -3,22 +3,20 @@
     <li class="breadcrumb-item"><a routerLink="/menu">Menu</a></li>
     <li class="breadcrumb-item">{{dish.name}}</li>
 </ul>
-<div class="container w3-padding-large">
-  <div class="row w3-padding-large">
+<div class="container">
+  <div class="row">
     <div class="col-xs-6 col-sm-8">
       <h1>{{dish.name}}<span class="badge badge-info">{{dish.price/100}}$</span></h1>
-      <p>{{dish.description}}</p>
+      <p class="w3-serif">{{dish.description}}</p>
     </div>
-    <div class="col-xs-6 col-sm-4">
+    <div class="col-xs-6 col-sm-3 offset-sm-1">
       <img class="img img-responsive dish-view" src="{{dish.image}}" alt="photo not found">
     </div>
   </div>
-  <div class="row w3-padding-large">
-    <h3 *ngIf="dish.comments.length>0">Comments : </h3>
-    <ul>
-      <li *ngFor="let comment of dish.comments">
-      <h5>{{comment.author.username}}<span class="badge">{{comment.rating}}</span></h5>
-      <p>{{comment.comment}}</p></li>
-    </ul>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <!--comments-->
+      <app-comments [dish]="dish"></app-comments>
+    </div>
   </div>
 </div>

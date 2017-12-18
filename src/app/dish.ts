@@ -5,9 +5,10 @@ export class Dish {
   createdAt? : Date ;
   image : string ;
   category : string ;
-  price : string ;
+  price : number ;
   description : string ;
   featured : boolean ;
   label : string ;
   comments? : Comment[] ;
+  _id : string ;
 }

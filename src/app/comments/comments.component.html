@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <h3 *ngIf="dish.comments.length>0">Comments : </h3>
+  </div>
+  <div class="col-xs-12 col-sm-12">
+      <ul class="nav navbar-nav">
+        <li *ngFor="let comment of dish.comments">
+        <div class="row" *ngIf="!isEditing">
+          <div class="col-xs-8 col-sm-8">
+            <h5>{{comment.author.username}}<span class="badge">{{comment.rating}}</span></h5>
+          </div>
+          <div class="col-xs-2 col-sm-2">
+            <button type="button" class="btn btn-info btn-sm"
+            *ngIf="commentOwner(comment)"
+            (click)="setEditing(comment)">Edit</button>
+          </div>
+          <div class="col-xs-2 col-sm-2">
+            <button type="button" class="btn btn-danger btn-sm"
+            *ngIf="commentOwner(comment)"
+            (click)="deleteComment(comment)">X</button>
+          </div>
+          <div class="col-xs-12 col-sm-12">
+            <p class="w3-wide w3-serif">{{comment.comment}}</p>
+          </div>
+          <hr>
+          </div>
+        </li>
+      </ul>
+      <div class="row" *ngIf="isEditing">
+        <div class="col-xs-12 col-sm-7 offset-sm-3">
+          <div class="row">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="commentedit">comment : <input type="text-area" id="commentedit"
+                  name="commentedit"
+                  class="form-control"
+                  [(ngModel)]="commentedit"
+                  style="min-height : 100px ;"></label>
+              </div>
+              <div class="form-group">
+                <label for="ratingedit">Rating : <input type="number" name="ratingedit" id="ratingedit"
+                  min="1" max="5"
+                  class="form-control"
+                  [(ngModel)]="ratingedit"></label>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-info btn-lg form-control"
+                 (click)="editComment()">Edit comment</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="row" *ngIf="!isEditing&&loggedin">
+    <div class="col-xs-11 offset-xs-1 col-sm-2">
+      <h6> <small>comment as </small>{{username}}  </h6>
+    </div>
+    <div class="col-xs-11 offset-xs-1 col-sm-8 offset-sm-2">
+      <div class="row">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="comment">comment : <input type="text-area" id="comment"
+              name="comment"
+              placeholder="leave your comment here : "
+              class="form-control"
+              [(ngModel)]="comment"
+              style="min-height : 100px ;"></label>
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating : <input type="number" name="rating" id="rating" value="1"
+              min="1" max="5"
+              class="form-control"
+              [(ngModel)]="rating"></label>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-info btn-lg form-control"
+             (click)="postComment()">Add comment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+<div class="row w3-serif" *ngIf="!loggedin">
+  <a routerLink="/login">Log in </a>&nbsp; or &nbsp;<a routerLink="/signup"> sign up </a>&nbsp; to comment
+</div>

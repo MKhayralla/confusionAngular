@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule , ReactiveFormsModule } from '@angular/forms'
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http' ;
-
+import { AuthModule } from './auth/auth.module' ;
+import { HttpModule } from '@angular/http' ;
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 
 import { AppComponent } from './app.component';
 import { DishesService } from './dishes.service';
@@ -22,7 +24,11 @@ import { HomeComponent } from './home/home.component';
 import { RoutingModule } from './routing/routing.module';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FooterComponent } from './footer/footer.component';
-import { FactsComponent } from './facts/facts.component' ;
+import { FactsComponent } from './facts/facts.component';
+import { UsersService } from './users.service';
+import { LoginComponent } from './login/login.component';
+import { CommentsComponent } from './comments/comments.component';
+import { SignupComponent } from './signup/signup.component' ;
 
 
 @NgModule({
@@ -40,15 +46,22 @@ import { FactsComponent } from './facts/facts.component' ;
     HomeComponent,
     AboutusComponent,
     FooterComponent,
-    FactsComponent
+    FactsComponent,
+    LoginComponent,
+    CommentsComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule ,
     FormsModule ,
+    ReactiveFormsModule ,
     HttpClientModule,
-    RoutingModule 
+    RoutingModule ,
+    AuthModule ,
+    HttpModule ,
+    NgbModule.forRoot()
   ],
-  providers: [DishesService, ConfigService, LeadersService,PromotionsService],
+  providers: [DishesService, ConfigService, LeadersService,PromotionsService,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

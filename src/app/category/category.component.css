@@ -1,8 +1,11 @@
 span {
-  padding-right: 15px ;
+  text-align: center;
 }
 .badge {
   background-color: red ;
   border: solid 1px grey ;
+  text-align: center;
+}
+a {
   text-align: center;
 }

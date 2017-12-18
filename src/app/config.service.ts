@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Dish } from './dish' ;
 import { Promotion } from './promotion' ;
 
-const api = 'https://localhost:3443'
+const api = 'https://confusion1995.herokuapp.com' ;
 @Injectable()
 export class ConfigService {
   url = api ;
