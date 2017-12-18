@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><script>// See http://www.backalleycoder.com/2016/05/13/sghpa-the-single-page-app-hack-for-github-pages/
+  (function(){
+    var redirect = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirect && redirect != location.href) {
+      history.replaceState(null, null, redirect);
+    }
+  })();</script><meta charset="utf-8"><title>ConFusion</title><base href="https://mkhayralla.github.io/confusionAngular/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="styles.f49b20b16ddac2b5e881.bundle.css" rel="stylesheet"/></head><body><app-root></app-root><script type="text/javascript" src="inline.aac1bdfb70646d077d5f.bundle.js"></script><script type="text/javascript" src="polyfills.ad37cd45a71cb38eee76.bundle.js"></script><script type="text/javascript" src="scripts.da6de8bbb6199d9ca04b.bundle.js"></script><script type="text/javascript" src="main.e8c685cc5ebe58c3ce31.bundle.js"></script></body></html>
