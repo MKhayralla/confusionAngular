@@ -11,12 +11,12 @@
           </div>
           <div class="col-xs-2 col-sm-2">
             <button type="button" class="btn btn-info btn-sm"
-            *ngIf="commentOwner(comment)"
+            *ngIf="commentOwner(comment)&&loggedin"
             (click)="setEditing(comment)">Edit</button>
           </div>
           <div class="col-xs-2 col-sm-2">
             <button type="button" class="btn btn-danger btn-sm"
-            *ngIf="commentOwner(comment)"
+            *ngIf="commentOwner(comment)&&loggedin"
             (click)="deleteComment(comment)">X</button>
           </div>
           <div class="col-xs-12 col-sm-12">
