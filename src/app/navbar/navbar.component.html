@@ -1,28 +1,27 @@
 <!-- Navbar (sit on top) -->
-<div class="w3-top">
-  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
-    <a routerLink='/home' class="w3-bar-item w3-button"><img
-       src="assets/img/logo.png" class="img img-responsive" alt="ConFusion"
-       style="max-width : 25px ;"></a>
-    <!-- Right-sided navbar links. Hide them on small screens -->
-    <div class="w3-right w3-hide-small">
-      <a routerLink="/aboutus" class="w3-bar-item w3-button">About</a>
-      <a routerLink="/menu" class="w3-bar-item w3-button">Menu</a>
-      <a routerLink="/contact" class="w3-bar-item w3-button">Contact</a>
-      <a routerLink="/login" (click)="set" *ngIf="!loggedin" class="w3-bar-item w3-button">Log In</a>
-      <a *ngIf="loggedin" (click)="logOut()" class="w3-bar-item w3-button">Log Out</a>
-    </div>
-    <div class="w3-right">
-      <a class="w3-button w3-hide-medium w3-hide-large" (click)="toggleMenu()">|||</a>
-    </div>
-  </div>
-  <div class="w3-white w3-right nav w3-hide-medium w3-hide-large">
-    <ul *ngIf="toggled">
-      <li><a routerLink="/aboutus" class="w3-button">About</a></li>
-      <li><a routerLink="/menu" class="w3-button">Menu</a></li>
-      <li><a routerLink="/contact" class="w3-button">Contact</a></li>
-      <li *ngIf="!loggedin"><a routerLink="/login" (click)="set" class="w3-button">Log In</a></li>
-      <li *ngIf="loggedin"><a (click)="logOut()" class="w3-button">Log Out</a></li>
-    </ul>
-  </div>
-</div>
+    <nav class="w3-white navbar navbar-fixed navbar-top">
+      <div class="navbar-header">
+        <a routerLink='/home' class="navbar-brand"><img
+           src="assets/img/logo.png" class="img img-responsive" alt="ConFusion"
+           style="max-width : 25px ;"></a>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav w3-hide-small">
+            <li><a routerLink="/aboutus" class="w3-bar-item w3-button">About</a></li>
+            <li><a routerLink="/menu" class="w3-bar-item w3-button">Menu</a></li>
+            <li><a routerLink="/contact" class="w3-bar-item w3-button">Contact</a></li>
+            <li><a routerLink="/login" (click)="set" *ngIf="!loggedin" class="w3-bar-item w3-button">Log In</a></li>
+            <li><a *ngIf="loggedin" (click)="logOut()" class="w3-bar-item w3-button">Log Out</a></li>
+        </ul>
+          <a class="w3-button w3-hide-medium w3-hide-large" (click)="toggleMenu()">|||</a>
+      </div>
+    </nav>
+    <!--toggle menu for small screens : -->
+        <ul *ngIf="toggled"
+        class="w3-white navbar-right w3-center navbar-nav w3-hide-medium w3-hide-large">
+            <li><a (click)="toggleMenu()" routerLink="/aboutus" class="w3-button">About</a></li>
+            <li><a (click)="toggleMenu()" routerLink="/menu" class="w3-button">Menu</a></li>
+            <li><a (click)="toggleMenu()" routerLink="/contact" class="w3-button">Contact</a></li>
+            <li><a (click)="toggleMenu()" routerLink="/login" (click)="set" *ngIf="!loggedin" class="w3-button">Log In</a></li>
+            <li><a (click)="toggleMenu()" *ngIf="loggedin" (click)="logOut()" class="w3-button">Log Out</a></li>
+        </ul>
