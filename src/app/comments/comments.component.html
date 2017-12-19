@@ -7,7 +7,7 @@
         <li *ngFor="let comment of dish.comments">
         <div class="row" *ngIf="!isEditing">
           <div class="col-xs-8 col-sm-8">
-            <h5>{{comment.author.username}}<span class="badge">{{comment.rating}}</span></h5>
+            <h5>{{comment.author.username}}</h5><small><rating [readonly]="true" [(ngModel)]="comment.rating"></rating></small>
           </div>
           <div class="col-xs-2 col-sm-2">
             <button type="button" class="btn btn-info btn-sm"
@@ -29,23 +29,31 @@
       <div class="row" *ngIf="isEditing">
         <div class="col-xs-12 col-sm-7 offset-sm-3">
           <div class="row">
-            <form class="form-horizontal">
+            <form class="form-horizontal" novalidate #commenteditform="ngForm">
               <div class="form-group">
                 <label for="commentedit">comment : <input type="text-area" id="commentedit"
                   name="commentedit"
                   class="form-control"
                   [(ngModel)]="commentedit"
+                  #commentnew="ngModel"
+                  required
                   style="min-height : 100px ;"></label>
               </div>
               <div class="form-group">
-                <label for="ratingedit">Rating : <input type="number" name="ratingedit" id="ratingedit"
-                  min="1" max="5"
-                  class="form-control"
-                  [(ngModel)]="ratingedit"></label>
+                <label for="rating">rating : </label>
+                <rating [required]="true" name="rating" class="form-control w3-center" id="rating"
+                  [(ngModel)]="ratingedit" #ratingnew="ngModel"></rating>
               </div>
+              <div class="form-control alert alert-danger" *ngIf="commentnew.touched&&commentnew.invalid">
+                comment is required
+              </div>
+              <div class="form-control alert alert-danger" *ngIf="commentnew.touched&&ratingnew.invalid">
+                rating is required
+              </div>
+
               <div class="form-group">
                 <button type="submit" class="btn btn-info btn-lg form-control"
-                 (click)="editComment()">Edit comment</button>
+                 (click)="editComment()" [disabled]="commenteditform.invalid">Update comment</button>
               </div>
             </form>
           </div>
@@ -59,24 +67,32 @@
     </div>
     <div class="col-xs-11 offset-xs-1 col-sm-8 offset-sm-2">
       <div class="row">
-        <form class="form-horizontal">
+        <form class="form-horizontal" name="commentform" #commentform="ngForm" novalidate>
           <div class="form-group">
             <label for="comment">comment : <input type="text-area" id="comment"
               name="comment"
               placeholder="leave your comment here : "
               class="form-control"
+              required
+              #commentbox="ngModel"
               [(ngModel)]="comment"
               style="min-height : 100px ;"></label>
           </div>
           <div class="form-group">
-            <label for="rating">Rating : <input type="number" name="rating" id="rating" value="1"
-              min="1" max="5"
-              class="form-control"
-              [(ngModel)]="rating"></label>
+            <label for="rating">rating : </label>
+            <rating [required]="true" name="rating" class="form-control w3-center" id="rating"
+              [(ngModel)]="rating" #ratingfield="ngModel"></rating>
           </div>
+          <div class="form-control alert alert-danger" *ngIf="commentbox.touched&&commentbox.invalid">
+            comment is required
+          </div>
+          <div class="form-control alert alert-danger" *ngIf="commentbox.touched&&ratingfield.invalid">
+            rating is required
+          </div>
+
           <div class="form-group">
             <button type="submit" class="btn btn-info btn-lg form-control"
-             (click)="postComment()">Add comment</button>
+             (click)="postComment()" [disabled]="commentform.invalid">Add comment</button>
           </div>
         </form>
       </div>

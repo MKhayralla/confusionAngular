@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http' ;
 import { AuthModule } from './auth/auth.module' ;
 import { HttpModule } from '@angular/http' ;
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
+import { RatingModule } from 'ngx-rating' ;
 
 import { AppComponent } from './app.component';
 import { DishesService } from './dishes.service';
@@ -59,7 +60,8 @@ import { SignupComponent } from './signup/signup.component' ;
     RoutingModule ,
     AuthModule ,
     HttpModule ,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RatingModule
   ],
   providers: [DishesService, ConfigService, LeadersService,PromotionsService,UsersService],
   bootstrap: [AppComponent]

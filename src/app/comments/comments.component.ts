@@ -3,7 +3,7 @@ import  { Dish } from '../dish' ;
 import { Comment } from '../comment' ;
 import { DishesService } from '../dishes.service' ;
 import { tokenNotExpired } from 'angular2-jwt' ;
-
+import { RatingModule } from 'ngx-rating' ;
 
 @Component({
   selector: 'app-comments',
