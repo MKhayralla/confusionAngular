@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   public username : string ;
   public password : string ;
   public passwordConfirm : string ;
+  public repeated : boolean = false ;
 
   ngOnInit() {
   }
@@ -23,10 +24,14 @@ export class SignupComponent implements OnInit {
       if (result) {
         console.log('signed up successfully !')
         alert('signed up successfully !');
+        this.repeated = false ;
         this.router.navigate(['/login']) ;
         document.location.reload() ;
       }
-    })
+      else {
+        this.repeated = true ;
+      }
+    } , () => this.repeated = true )
   }
 
 
